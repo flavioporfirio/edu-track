@@ -1,9 +1,16 @@
 .pageNotFound {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  gap: 20px;
 
   height: 100vh;
 
   margin: 0 auto;
+}
+
+.pageNotFound h1 {
+  font-size: 42px;
 }
