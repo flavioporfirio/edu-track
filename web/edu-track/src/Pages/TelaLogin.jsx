@@ -1,35 +1,21 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./TelaLogin.module.css";
 
-export default function TelaLogin() {
-  const [user, setUser] = useState({});
-  const [RA, setRA] = useState("");
-  const [password, setPassword] = useState("");
+export default function TelaLogin({
+  ra,
+  password,
+  user,
+  onHandleRA,
+  onHandlePassword,
+}) {
   const navigate = useNavigate();
 
   function handleLogin() {
-    if (user.RA === RA && user.password === password) {
-      navigate("cadastro");
-      console.log("aqui");
+    if (user.ra === ra && user.password === password) {
+      navigate("pesquisarAlunos");
     }
   }
-
-  useEffect(
-    function () {
-      async function fetchData() {
-        const res = await fetch(
-          `http://localhost:3333/dimensao_professor?RA=${RA}`
-        );
-        const fetchData = await res.json();
-
-        setUser(fetchData[0]);
-        console.log(fetchData);
-      }
-      fetchData();
-    },
-    [RA]
-  );
 
   return (
     <main className={styles.main}>
@@ -46,8 +32,8 @@ export default function TelaLogin() {
             <input
               type="text"
               id="ra"
-              value={RA}
-              onChange={(e) => setRA(e.target.value)}
+              value={ra}
+              onChange={(e) => onHandleRA(e.target.value)}
             />
           </div>
           <div className={styles.formField}>
@@ -57,12 +43,14 @@ export default function TelaLogin() {
               id="password"
               name="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => onHandlePassword(e.target.value)}
             />
             {}
           </div>
           <div className={styles.createAccount}>
-            <p>Cadastrar professor</p>
+            <Link to="cadastro" type="link">
+              Cadastrar professor
+            </Link>
             <button>Entrar</button>
           </div>
           <Link to="ajuda" type="link">

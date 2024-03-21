@@ -1,0 +1,6 @@
+.studentContainer {
+  display: flex;
+  gap: 20px;
+
+  padding-block: 20px;
+}

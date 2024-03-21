@@ -1,12 +1,16 @@
+/* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
+import styles from "./PageNav.module.css";
 
-export default function PageNav() {
+export default function PageNav({ user }) {
   return (
-    <nav>
-      <div>
-        <img src="X" alt="imagem do professor X" />
-        <p>Nome do professor</p>
-        <p>RA: 29434506</p>
+    <nav className={styles.nav}>
+      <div className={styles.infoContainer}>
+        <img src={user.profileImg} alt={`${user.nome} profile picture`} />
+        <div>
+          <p>{user.nome}</p>
+          <p>RA: {user.ra}</p>
+        </div>
       </div>
 
       <ul>

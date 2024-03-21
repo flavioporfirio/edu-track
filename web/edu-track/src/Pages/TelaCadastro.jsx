@@ -1,35 +1,56 @@
-import { useEffect, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import z from "zod";
 import styles from "./TelaCadastro.module.css";
 
+const createFormSchema = z.object({
+  name: z.string().min(1, "Insira seu nome"),
+  email: z.string().email("Insira um email válido"),
+  ra: z.string().min(8, "RA deve conter 8 números"),
+  phone: z.string(),
+  message: z.string().min(1, "Insira sua mensagem"),
+});
+
+const createImg = `https://i.pravatar.cc/1000?u=${Math.floor(
+  Math.random() * 10000
+)}`;
+
 export default function TelaCadastro() {
-  const [user, setUser] = useState({});
-  const [RA, setRA] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit, watch, formState } = useForm({
+    resolver: zodResolver(createFormSchema),
+  });
+
   const navigate = useNavigate();
+  const [accountType, setAccountType] = useState("");
 
-  function handleLogin() {
-    if (user.RA === RA && user.password === password) {
-      navigate("cadastro");
-      console.log("aqui");
-    }
+  const name = watch("name");
+  const email = watch("email");
+  const ra = watch("ra");
+  const turma = watch("turma");
+  const materia = watch("materia");
+  const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
+
+  async function createAccount() {
+    await fetch(`http://localhost:3333/dimensao_${accountType.toLowerCase()}`, {
+      method: "POST",
+      body: JSON.stringify({
+        id: crypto.randomUUID(),
+        name,
+        email,
+        ra,
+        turma,
+        materia,
+        profileImg: createImg,
+        password,
+        confirmPassword,
+      }),
+    });
+
+    navigate("/");
   }
-
-  useEffect(
-    function () {
-      async function fetchData() {
-        const res = await fetch(
-          `http://localhost:3333/dimensao_professor?RA=${RA}`
-        );
-        const fetchData = await res.json();
-
-        setUser(fetchData[0]);
-        console.log(fetchData);
-      }
-      fetchData();
-    },
-    [RA]
-  );
 
   return (
     <main className={styles.main}>
@@ -38,95 +59,90 @@ export default function TelaCadastro() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleLogin();
+            navigate("/");
           }}
         >
+          <h1>Criar conta </h1>
           <div className={styles.formField}>
-            <label htmlFor="ra">Nome Completo*</label>
+            <label htmlFor="name">Nome Completo*</label>
+            <input type="text" id="name" name="name" {...register("name")} />
+          </div>
+          <div className={styles.formField}>
+            <label htmlFor="email">E-mail*</label>
+            <input type="text" id="email" name="email" {...register("email")} />
+          </div>
+          <div className={styles.formField}>
+            <label htmlFor="ra">RA*</label>
+            <input type="text" id="ra" name="ra" {...register("ra")} />
+          </div>
+          <div className={styles.formField}>
+            <label htmlFor="turma">Turma*</label>
+            <input type="text" id="turma" name="turma" {...register("turma")} />
+          </div>
+          <div className={styles.formField}>
+            <label htmlFor="materia">Matérias*</label>
             <input
               type="text"
-              id="ra"
-              value={RA}
-              onChange={(e) => setRA(e.target.value)}
+              id="materia"
+              name="materia"
+              {...register("materia")}
             />
           </div>
           <div className={styles.formField}>
-            <label htmlFor="password">E-mail*</label>
+            <label htmlFor="senha">Senha*</label>
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              id="password"
+              name="password"
+              {...register("password")}
             />
-            {}
           </div>
           <div className={styles.formField}>
-            <label htmlFor="password">RA*</label>
+            <label htmlFor="confirmaSenha">Confirmar senha*</label>
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              id="confirmPassword"
+              name="confirmPassword"
+              {...register("confirmPassword")}
             />
-            {}
-          </div>
-          <div className={styles.formField}>
-            <label htmlFor="password">Turma*</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {}
-          </div>
-          <div className={styles.formField}>
-            <label htmlFor="password">Matéria*</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {}
-          </div>
-          <div className={styles.formField}>
-            <label htmlFor="password">Senha</label>
-            <input
-              type="text"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {}
-          </div>
-          <div className={styles.formField}>
-            <label htmlFor="password">Confirmar senha*</label>
-            <input
-              type="text"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {}
           </div>
         </form>
 
-        <div className={styles.logo}>
-          <div>
-            <img src="./logo-edu-track.jpeg" alt="logo edu track" />
+        <div className={styles.register}>
+          <div className={styles.photoContainer}>
+            <img src={createImg} alt="logo edu track" />
             <p>Foto de perfil</p>
           </div>
           <div>
             <p>Cadastro para:</p>
-            <div>
-              <button>Diretor</button>
-              <button>Coordenador</button>
-              <button>Professor</button>
+            <div className={styles.accountType}>
+              <button onClick={() => setAccountType("Diretor")}>Diretor</button>
+              <button onClick={() => setAccountType("Coordenador")}>
+                Coordenador
+              </button>
+              <button onClick={() => setAccountType("Professor")}>
+                Professor
+              </button>
             </div>
           </div>
           <div>
             <div className={styles.createAccount}>
-              <p>Cadastrar professor</p>
-              <button>Entrar</button>
+              <Link to="ajuda" type="link">
+                Ajuda*
+              </Link>
+              <div>
+                <Link to="/" type="link">
+                  Cancel
+                </Link>
+                <button
+                  onClick={() => {
+                    createAccount();
+                  }}
+                >
+                  Cadastrar
+                </button>
+              </div>
             </div>
-            <Link to="ajuda" type="link">
-              Ajuda*
-            </Link>
           </div>
         </div>
       </div>
