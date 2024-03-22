@@ -13,10 +13,24 @@
           "ano": 2023
         }
       },
-      "disciplina": {
-        "cod_disciplina": 1,
-        "nome": "Matemática"
-      },
+      "disciplina": [
+        {
+          "cod_disciplina": 1,
+          "nome": "Matemática"
+        },
+        {
+          "cod_disciplina": 2,
+          "nome": "Português"
+        },
+        {
+          "cod_disciplina": 3,
+          "nome": "Inglês"
+        },
+        {
+          "cod_disciplina": 4,
+          "nome": "História"
+        }
+      ],
       "professor": {
         "cod_professor": 1,
         "nome": "Maria Oliveira"
@@ -40,10 +54,24 @@
           "ano": 2023
         }
       },
-      "disciplina": {
-        "cod_disciplina": 1,
-        "nome": "Matemática"
-      },
+      "disciplina": [
+        {
+          "cod_disciplina": 1,
+          "nome": "Matemática"
+        },
+        {
+          "cod_disciplina": 2,
+          "nome": "Português"
+        },
+        {
+          "cod_disciplina": 3,
+          "nome": "Inglês"
+        },
+        {
+          "cod_disciplina": 4,
+          "nome": "História"
+        }
+      ],
       "professor": {
         "cod_professor": 1,
         "nome": "Maria Oliveira"

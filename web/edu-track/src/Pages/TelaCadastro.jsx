@@ -17,6 +17,14 @@ const createImg = `https://i.pravatar.cc/1000?u=${Math.floor(
   Math.random() * 10000
 )}`;
 
+/* Turma, e matéria tem que aceitar valores com virgula...
+
+ ex:
+ 1ºC,1ºB
+ Matematica,Portugues,Ingles
+
+  para transformar em array e colocar no objeto
+ */
 export default function TelaCadastro() {
   const { register, handleSubmit, watch, formState } = useForm({
     resolver: zodResolver(createFormSchema),

@@ -1,0 +1,23 @@
+.opcaoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+
+  padding-block: 4rem;
+
+  width: 100%;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.btnContainer button {
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+
+  cursor: pointer;
+}

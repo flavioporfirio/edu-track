@@ -1,15 +1,14 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
-import { useState } from "react";
 import Student from "../Components/Student";
-import useGetListAlunos from "../Hooks/useGetListAlunos";
 import PageNav from "./PageNav";
 import styles from "./TelaInicial.module.css";
 
-export default function TelaInicial({ user }) {
-  const [nome, setNome] = useState("");
-  const { studentList } = useGetListAlunos(nome);
-
+export default function TelaInicial({
+  user,
+  nome,
+  onHandleSetNome,
+  studentList,
+  onHandleSelectStudent
+}) {
   console.log(studentList);
 
   return (
@@ -26,12 +25,14 @@ export default function TelaInicial({ user }) {
             type="text"
             placeholder="Digite o nome do aluno"
             value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            onChange={(e) => onHandleSetNome(e.target.value)}
           />
         </form>
-        {studentList.map((student) => (
-          <Student student={student} />
-        ))}
+        <div className={styles.studentListContainer}>
+          {studentList.map((student) => (
+            <Student student={student} key={student.aluno.matricula} onHandleSelectStudent={onHandleSelectStudent} />
+          ))}
+        </div>
       </div>
     </main>
   );

@@ -1,0 +1,16 @@
+.studentInfo {
+  display: flex;
+  justify-content: space-around;
+}
+
+.studentInfo div p {
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.studentInfo div p:nth-child(2) {
+  padding: 1rem 6rem;
+
+  border-radius: 1.5rem;
+  background-color: gray;
+}
