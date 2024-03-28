@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Student.module.css";
 
 export default function Student({ student, onHandleSelectStudent }) {
-  const aluno = student.aluno;
   const navigate = useNavigate();
   console.log(student);
 
@@ -16,8 +15,8 @@ export default function Student({ student, onHandleSelectStudent }) {
       }}
     >
       <div className={styles.studentInfo}>
-        <p>{aluno.nome}</p>
-        <p>{aluno.turma.ano}</p>
+        <p>{student.nome}</p>
+        <p>{student.turma}</p>
       </div>
     </div>
   );

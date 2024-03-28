@@ -5,11 +5,11 @@ export default function StudentInfo({ selectedStudent }) {
     <div className={styles.studentInfo}>
       <div>
         <p>Nome do Aluno</p>
-        <p>{selectedStudent.aluno.nome}</p>
+        <p>{selectedStudent.nome}</p>
       </div>
       <div>
         <p>Série</p>
-        <p>{selectedStudent.aluno.turma.ano}</p>
+        <p>{selectedStudent.turma}</p>
       </div>
     </div>
   );

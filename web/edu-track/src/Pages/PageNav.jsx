@@ -15,6 +15,9 @@ export default function PageNav({ user }) {
 
       <ul>
         <li>
+          <NavLink to="/pesquisarAlunos">Pesquisar</NavLink>
+        </li>
+        <li>
           <NavLink to="/">Login</NavLink>
         </li>
       </ul>

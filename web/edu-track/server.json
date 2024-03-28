@@ -1,151 +1,316 @@
 {
   "fato_aluno": [
     {
-      "media": 8.5,
-      "faltas": 2,
-      "situacao": true,
-      "aluno": {
-        "matricula": 12345,
-        "nome": "João Silva",
-        "data_nascimento": "2000-01-01",
-        "turma": {
-          "cod_turma": 1,
-          "ano": 2023
+      "id": "1953",
+      "faltas": [
+        {
+          "materia": "Educação Física",
+          "data": "2024-03-27"
+        },
+        {
+          "materia": "Matemática",
+          "data": "2024-03-27"
+        },
+        {
+          "materia": "Lingua Portuguesa",
+          "data": "2024-03-27"
+        },
+        {
+          "materia": "Ciências",
+          "data": "2024-03-27"
+        },
+        {
+          "materia": "Ciências",
+          "data": "2024-03-27",
+          "nome_prof": "Flavio"
+        },
+        {
+          "materia": "Geografia",
+          "data": "2024-03-27",
+          "nome_prof": "Flávio Porfírio Rodrigues"
         }
-      },
+      ],
+      "situacao": true,
+      "ra": 12345,
+      "nome": "João Silva",
+      "data_nascimento": "2000-01-01",
+      "ano": "4 ano",
+      "turma": "4 ºB",
       "disciplina": [
         {
-          "cod_disciplina": 1,
+          "id": 1,
           "nome": "Matemática"
         },
         {
-          "cod_disciplina": 2,
-          "nome": "Português"
+          "id": 2,
+          "nome": "Lingua Portuguesa"
         },
         {
-          "cod_disciplina": 3,
-          "nome": "Inglês"
+          "id": 3,
+          "nome": "Educação Física"
         },
         {
-          "cod_disciplina": 4,
+          "id": 4,
+          "nome": "Lingua Inglesa"
+        },
+        {
+          "id": 5,
+          "nome": "Ciências"
+        },
+        {
+          "id": 6,
+          "nome": "Geografia"
+        },
+        {
+          "id": 7,
+          "nome": "Arte"
+        },
+        {
+          "id": 8,
           "nome": "História"
         }
-      ],
-      "professor": {
-        "cod_professor": 1,
-        "nome": "Maria Oliveira"
-      },
-      "tempo": {
-        "cod_tempo": 1,
-        "data": "2023-03-08"
-      },
-      "id": "1953"
+      ]
     },
     {
-      "media": 9,
-      "faltas": 0,
-      "situacao": true,
-      "aluno": {
-        "matricula": 54321,
-        "nome": "Ana Souza",
-        "data_nascimento": "2001-02-02",
-        "turma": {
-          "cod_turma": 1,
-          "ano": 2023
+      "id": "38aa",
+      "faltas": [
+        {
+          "materia": "Matemática",
+          "data": "2024-03-28",
+          "nome_prof": "Flávio Porfírio Rodrigues"
+        },
+        {
+          "materia": "Ciências",
+          "data": "2024-03-27",
+          "nome_prof": "Flávio Porfírio Rodrigues"
         }
-      },
+      ],
+      "situacao": true,
+      "ra": 54321,
+      "nome": "Ana Souza",
+      "data_nascimento": "2001-02-02",
+      "ano": "5 ano",
+      "turma": "5 ºC",
       "disciplina": [
         {
-          "cod_disciplina": 1,
+          "id": 1,
           "nome": "Matemática"
         },
         {
-          "cod_disciplina": 2,
-          "nome": "Português"
+          "id": 2,
+          "nome": "Lingua Portuguesa"
         },
         {
-          "cod_disciplina": 3,
-          "nome": "Inglês"
+          "id": 3,
+          "nome": "Educação Física"
         },
         {
-          "cod_disciplina": 4,
+          "id": 4,
+          "nome": "Lingua Inglesa"
+        },
+        {
+          "id": 5,
+          "nome": "Ciências"
+        },
+        {
+          "id": 6,
+          "nome": "Geografia"
+        },
+        {
+          "id": 7,
+          "nome": "Arte"
+        },
+        {
+          "id": 8,
           "nome": "História"
         }
-      ],
-      "professor": {
-        "cod_professor": 1,
-        "nome": "Maria Oliveira"
-      },
-      "tempo": {
-        "cod_tempo": 1,
-        "data": "2023-03-08"
-      },
-      "id": "38aa"
+      ]
     }
   ],
   "dimensao_aluno": [
     {
-      "matricula": 12345,
+      "ra": 12345,
       "nome": "João Silva",
       "data_nascimento": "2000-01-01",
-      "id": "045a"
+      "id": "1953"
     },
     {
-      "matricula": 54321,
+      "ra": 54321,
       "nome": "Ana Souza",
       "data_nascimento": "2001-02-02",
-      "id": "9cc3"
-    }
-  ],
-  "dimensao_disciplina": [
-    {
-      "cod_disciplina": 1,
-      "nome": "Matemática",
-      "id": "e560"
+      "id": "38aa"
     }
   ],
   "dimensao_professor": [
-    {
-      "cod_professor": 1,
-      "nome": "Maria Oliveira",
-      "ra": "45653456",
-      "password": "teste1",
-      "id": "165b"
-    },
     {
       "id": "e517546c-3252-4cb2-b86d-1246b03fb75f",
       "nome": "Flávio Porfírio Rodrigues",
       "email": "flavioporfirio86@gmail.com",
       "ra": "10369090",
-      "turma": "1 ºC",
-      "materia": "Português",
+      "turma": [
+        "1 ºB",
+        "1 ºC"
+      ],
+      "materia": [
+        "Matemática",
+        "Português"
+      ],
       "profileImg": "https://i.pravatar.cc/1000?u=499476",
-      "password": "teste2",
-      "confirmPassword": "teste2"
+      "password": "teste2"
     },
     {
       "id": "b99c4ac8-4035-41f6-8802-1028ec9961e0",
-      "name": "Flavio",
+      "nome": "Flavio",
       "email": "flavioprdragon@gmail.com",
       "ra": "34543567",
-      "turma": "1 ºB",
-      "materia": "Matemática",
-      "password": "teste3",
-      "confirmPassword": "teste3"
+      "turma": [
+        "1 ºB",
+        "1 ºC"
+      ],
+      "materia": [
+        "Matemática",
+        "Português"
+      ],
+      "profileImg": "https://i.pravatar.cc/1000?u=499475",
+      "password": "teste3"
     }
   ],
-  "dimensao_tempo": [
+  "dimensao_disciplina": [
     {
-      "cod_tempo": 1,
-      "data": "2023-03-08",
-      "id": "c830"
+      "id": 1,
+      "nome": "Matemática"
+    },
+    {
+      "id": 2,
+      "nome": "Lingua Portuguesa"
+    },
+    {
+      "id": 3,
+      "nome": "Educação Física"
+    },
+    {
+      "id": 4,
+      "nome": "Lingua Inglesa"
+    },
+    {
+      "id": 5,
+      "nome": "Ciências"
+    },
+    {
+      "id": 6,
+      "nome": "Geografia"
+    },
+    {
+      "id": 7,
+      "nome": "Arte"
+    },
+    {
+      "id": 8,
+      "nome": "História"
     }
   ],
   "dimensao_turma": [
     {
-      "cod_turma": 1,
-      "ano": 2023,
-      "id": "2362"
+      "id": 1,
+      "turma": "1 ºA"
+    },
+    {
+      "id": 2,
+      "turma": "1 ºB"
+    },
+    {
+      "id": 3,
+      "turma": "1 ºC"
+    },
+    {
+      "id": 4,
+      "turma": "2 ºD"
+    },
+    {
+      "id": 5,
+      "turma": "2 ºA"
+    },
+    {
+      "id": 6,
+      "turma": "2 ºB"
+    },
+    {
+      "id": 7,
+      "turma": "2 ºC"
+    },
+    {
+      "id": 8,
+      "turma": "2 ºD"
+    },
+    {
+      "id": 9,
+      "turma": "3 ºa"
+    },
+    {
+      "id": 10,
+      "turma": "3 ºB"
+    },
+    {
+      "id": 11,
+      "turma": "3 ºC"
+    },
+    {
+      "id": 12,
+      "turma": "3 ºD"
+    },
+    {
+      "id": 13,
+      "turma": "4 ºA"
+    },
+    {
+      "id": 14,
+      "turma": "4 ºB"
+    },
+    {
+      "id": 15,
+      "turma": "4 ºC"
+    },
+    {
+      "id": 16,
+      "turma": "4 ºD"
+    },
+    {
+      "id": 17,
+      "turma": "5 ºA"
+    },
+    {
+      "id": 18,
+      "turma": "5 ºB"
+    },
+    {
+      "id": 19,
+      "turma": "5 ºC"
+    },
+    {
+      "id": 20,
+      "turma": "5 ºD"
+    }
+  ],
+  "dimensao_ano": [
+    {
+      "id": 1,
+      "ano": "1 ano"
+    },
+    {
+      "id": 2,
+      "ano": "2 ano"
+    },
+    {
+      "id": 3,
+      "ano": "3 ano"
+    },
+    {
+      "id": 4,
+      "ano": "4 ano"
+    },
+    {
+      "id": 5,
+      "ano": "5 ano"
     }
   ]
 }

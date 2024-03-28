@@ -8,7 +8,7 @@ export default function Select({ disc, onHandleSubject }) {
       onChange={(e) => onHandleSubject(e.target.value)}
     >
       {disc.map((disc) => (
-        <option key={disc.cod_disciplina} value={disc.nome}>
+        <option key={disc.id} value={disc.nome}>
           {disc.nome}
         </option>
       ))}

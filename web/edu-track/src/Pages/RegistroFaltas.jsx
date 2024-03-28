@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Select from "../Components/Select";
-import StudentInfo from "../Components/StudentInfo";
 import PageNav from "./PageNav";
 import styles from "./RegistroFaltas.module.css";
 
@@ -15,11 +14,33 @@ export default function RegistroFaltas({ user, selectedStudent }) {
     setSubject(sub);
   }
 
+  function updateStudentData(subject, date, selectedStudent) {
+    selectedStudent.faltas.push({
+      materia: subject,
+      data: date,
+      nome_prof: user.nome,
+    });
+
+    console.log(selectedStudent.faltas.length);
+
+    fetch(`http://localhost:3333/fato_aluno/${selectedStudent.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...selectedStudent,
+      }),
+    });
+  }
+
   return (
     <main className="main">
       <PageNav user={user} />
+
       <h1>EduTrack</h1>
-      <StudentInfo selectedStudent={selectedStudent} />
+      <h3 className="subtitle">Registro de faltas</h3>
+
       <div className={styles.absenceContainer}>
         <div className={styles.subject}>
           <h3>Matéria</h3>
@@ -42,10 +63,17 @@ export default function RegistroFaltas({ user, selectedStudent }) {
           Ajuda*
         </Link>
         <div>
-          <Link to="/" type="link">
+          <Link to="/opcao" type="link">
             Cancel
           </Link>
-          <button onClick={() => navigate("/opcao")}>Registrar falta</button>
+          <button
+            onClick={() => {
+              updateStudentData(subject, date, selectedStudent);
+              navigate("/opcao");
+            }}
+          >
+            Registrar falta
+          </button>
         </div>
       </div>
     </main>

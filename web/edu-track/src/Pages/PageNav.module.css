@@ -23,3 +23,8 @@
 .infoContainer div p:nth-child(1) {
   padding-bottom: 1rem;
 }
+
+.nav ul {
+  display: flex;
+  gap: 20px;
+}

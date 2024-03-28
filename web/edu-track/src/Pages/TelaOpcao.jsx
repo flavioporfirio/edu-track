@@ -19,7 +19,9 @@ export default function TelaOpcao({ user, selectedStudent }) {
           <button onClick={() => navigate("/registroFaltas")}>
             Registrar falta
           </button>
-          <button>Relatório de faltas</button>
+          <button onClick={() => navigate("/relatorioFaltasAluno")}>
+            Relatório de faltas
+          </button>
         </div>
       </div>
     </main>

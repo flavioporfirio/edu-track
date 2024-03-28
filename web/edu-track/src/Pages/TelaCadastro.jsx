@@ -42,20 +42,24 @@ export default function TelaCadastro() {
   const confirmPassword = watch("confirmPassword");
 
   async function createAccount() {
-    await fetch(`http://localhost:3333/dimensao_${accountType.toLowerCase()}`, {
-      method: "POST",
-      body: JSON.stringify({
-        id: crypto.randomUUID(),
-        name,
-        email,
-        ra,
-        turma,
-        materia,
-        profileImg: createImg,
-        password,
-        confirmPassword,
-      }),
-    });
+    if (password === confirmPassword) {
+      await fetch(
+        `http://localhost:3333/dimensao_${accountType.toLowerCase()}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            id: crypto.randomUUID(),
+            nome: name,
+            email,
+            ra,
+            turma,
+            materia,
+            profileImg: createImg,
+            password,
+          }),
+        }
+      );
+    }
 
     navigate("/");
   }

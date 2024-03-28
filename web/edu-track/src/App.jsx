@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import useGetListAlunos from "./Hooks/useGetListAlunos";
 import useGetProfessor from "./Hooks/useGetProfessor";
+import useGetSelectedStudent from "./Hooks/useGetSelectedStudent";
 import Ajuda from "./Pages/Ajuda";
 import PageNotFound from "./Pages/PageNotFound";
 import RegistroFaltas from "./Pages/RegistroFaltas";
+import RelatorioFaltas from "./Pages/RelatorioFaltas";
+import RelatorioFaltasAluno from "./Pages/RelatorioFaltasAluno";
 import TelaCadastro from "./Pages/TelaCadastro";
 import TelaInicial from "./Pages/TelaInicial";
 import TelaLogin from "./Pages/TelaLogin";
@@ -18,11 +20,10 @@ export default function App() {
   const [selectedStudent, setSelectedStudent] = useState(null);
 
   const { user } = useGetProfessor(ra);
-  const { studentList } = useGetListAlunos(nome);
-
-  function handleRA(RA) {
+  const { student } = useGetSelectedStudent(nome);
+  const { studentList } = function handleRA(RA) {
     setRa(RA);
-  }
+  };
 
   function handlePassword(pass) {
     setPassword(pass);
@@ -30,6 +31,10 @@ export default function App() {
 
   function handleNome(nome) {
     setNome(nome);
+  }
+
+  function handleRA(ra) {
+    setRa(ra);
   }
 
   function handleSelectStudent(studentObj) {
@@ -60,7 +65,7 @@ export default function App() {
                 user={user}
                 nome={nome}
                 onHandleSetNome={handleNome}
-                studentList={studentList}
+                student={student}
                 onHandleSelectStudent={handleSelectStudent}
               />
             }
@@ -75,6 +80,19 @@ export default function App() {
             path="/registroFaltas"
             element={
               <RegistroFaltas user={user} selectedStudent={selectedStudent} />
+            }
+          />
+          <Route
+            path="/relatorioFaltas"
+            element={<RelatorioFaltas user={user} />}
+          />
+          <Route
+            path="/relatorioFaltasAluno"
+            element={
+              <RelatorioFaltasAluno
+                user={user}
+                selectedStudent={selectedStudent}
+              />
             }
           />
 
