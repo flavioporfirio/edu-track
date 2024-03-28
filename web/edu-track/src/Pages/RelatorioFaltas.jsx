@@ -1,14 +1,21 @@
-import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 import useGetStudentList from "../Hooks/useGetStudentList";
 import PageNav from "./PageNav";
 import styles from "./RelatorioFaltasAluno.module.css";
-
-/*Esta dando erro, pq no momento estou pegando os dados do aluno (selectedStudent), tenho que arrumar o JSON para ter uma dimensao_faltas, onde é separado por turmas, ano, data, professor e disciplina  */
 
 export default function AbsenceReport({ user, selectedStudent }) {
   const { studentList } = useGetStudentList();
   const absenceObj = [];
   console.log(studentList);
+
+  const navigate = useNavigate();
+
+  const documentContent = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => documentContent.current,
+  });
 
   studentList.map((student) =>
     absenceObj.push({
@@ -43,7 +50,7 @@ export default function AbsenceReport({ user, selectedStudent }) {
 
   console.log(absenceObj);
   return (
-    <main className="main">
+    <main className="main" ref={documentContent}>
       <PageNav user={user} />
 
       <h1>EduTrack</h1>
@@ -77,11 +84,11 @@ export default function AbsenceReport({ user, selectedStudent }) {
           </Link>
           <button
             onClick={() => {
-              updateStudentData(subject, date, selectedStudent);
-              navigate("/opcao");
+              handlePrint();
+              // navigate("/opcao");
             }}
           >
-            Registrar falta
+            Gerar relatório
           </button>
         </div>
       </div>
