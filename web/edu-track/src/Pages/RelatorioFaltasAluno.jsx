@@ -1,20 +1,28 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 import StudentInfo from "../Components/StudentInfo";
 import PageNav from "./PageNav";
 import styles from "./RelatorioFaltasAluno.module.css";
 
 export default function AbsenceReport({ user, selectedStudent }) {
-  // Function to count absences by subject
+  const documentContent = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => documentContent.current,
+  });
+
   const countAbsences = (data) => {
     const subjectCounts = data.reduce((acc, absence) => {
-      acc[absence.subject] = (acc[absence.subject] || 0) + 1;
+      acc[absence.materia] = (acc[absence.materia] || 0) + 1;
+
       return acc;
     }, {});
+
     return subjectCounts;
   };
 
-  // Get the counts
-  const subjectAbsenceCounts = countAbsences(selectedStudent.faltas);
+  const subjectAbsenceCounts = countAbsences(selectedStudent?.faltas);
 
   console.log(subjectAbsenceCounts);
 
@@ -27,12 +35,12 @@ export default function AbsenceReport({ user, selectedStudent }) {
 
       <StudentInfo selectedStudent={selectedStudent} />
 
-      <div className={styles.absenceContainer}>
+      <div className={styles.absenceContainer} ref={documentContent}>
         <table>
           <thead>
             <tr>
-              <th>Subject</th>
-              <th>Absences</th>
+              <th>Materia</th>
+              <th>Faltas</th>
             </tr>
           </thead>
           <tbody>
@@ -55,8 +63,7 @@ export default function AbsenceReport({ user, selectedStudent }) {
           </Link>
           <button
             onClick={() => {
-              updateStudentData(subject, date, selectedStudent);
-              navigate("/opcao");
+              handlePrint();
             }}
           >
             Gerar relatório

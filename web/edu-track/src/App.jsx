@@ -21,9 +21,10 @@ export default function App() {
 
   const { user } = useGetProfessor(ra);
   const { student } = useGetSelectedStudent(nome);
-  const { studentList } = function handleRA(RA) {
+
+  function handleRA(RA) {
     setRa(RA);
-  };
+  }
 
   function handlePassword(pass) {
     setPassword(pass);

@@ -18,7 +18,7 @@ export default function RegistroFaltas({ user, selectedStudent }) {
     selectedStudent.faltas.push({
       materia: subject,
       data: date,
-      nome_prof: user.nome,
+      professor: user.nome,
     });
 
     console.log(selectedStudent.faltas.length);

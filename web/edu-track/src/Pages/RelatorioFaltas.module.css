@@ -42,3 +42,12 @@
 
   cursor: pointer;
 }
+
+.absenceContainer td {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.absenceContainer th {
+  padding: 2rem;
+}
