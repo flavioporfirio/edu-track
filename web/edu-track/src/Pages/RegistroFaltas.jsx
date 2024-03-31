@@ -23,15 +23,18 @@ export default function RegistroFaltas({ user, selectedStudent }) {
 
     console.log(selectedStudent.faltas.length);
 
-    fetch(`http://localhost:3333/fato_aluno/${selectedStudent.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...selectedStudent,
-      }),
-    });
+    fetch(
+      `https://my-json-server.typicode.com/flavioporfirio/server/fato_aluno/${selectedStudent.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...selectedStudent,
+        }),
+      }
+    );
   }
 
   return (

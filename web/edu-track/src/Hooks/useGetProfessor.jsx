@@ -7,7 +7,7 @@ export default function useGetProfessor(ra) {
     function () {
       async function fetchData() {
         const res = await fetch(
-          `http://localhost:3333/dimensao_professor?ra=${ra}`
+          `https://my-json-server.typicode.com/flavioporfirio/server/dimensao_professor?ra=${ra}`
         );
         const fetchData = await res.json();
 

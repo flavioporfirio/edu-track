@@ -40,12 +40,11 @@ export default function TelaCadastro() {
   const materia = watch("materia");
   const password = watch("password");
   const confirmPassword = watch("confirmPassword");
+
   async function createAccount() {
-    const turmaArr = turma.split(",");
-    const materiaArr = materia.split(",");
     if (password === confirmPassword) {
       await fetch(
-        `http://localhost:3333/dimensao_${accountType.toLowerCase()}`,
+        `https://my-json-server.typicode.com/flavioporfirio/server/dimensao_${accountType.toLowerCase()}`,
         {
           method: "POST",
           body: JSON.stringify({
