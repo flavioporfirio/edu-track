@@ -30,7 +30,15 @@
   margin: 0 auto;
 
   width: 30rem;
-  height: 30rem;
+  height: 24rem;
 
   overflow-y: auto;
+}
+
+.container button {
+  float: right;
+  padding: 1rem 2rem;
+
+  color: white;
+  background-color: gray;
 }

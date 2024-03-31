@@ -40,8 +40,9 @@ export default function TelaCadastro() {
   const materia = watch("materia");
   const password = watch("password");
   const confirmPassword = watch("confirmPassword");
-
   async function createAccount() {
+    const turmaArr = turma.split(",");
+    const materiaArr = materia.split(",");
     if (password === confirmPassword) {
       await fetch(
         `http://localhost:3333/dimensao_${accountType.toLowerCase()}`,
@@ -52,8 +53,8 @@ export default function TelaCadastro() {
             nome: name,
             email,
             ra,
-            turma,
-            materia,
+            turma: turma.split(","),
+            materia: materia.split(","),
             profileImg: createImg,
             password,
           }),
