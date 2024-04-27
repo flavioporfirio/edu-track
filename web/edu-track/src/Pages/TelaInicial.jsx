@@ -9,6 +9,7 @@ export default function TelaInicial({
   onHandleSetNome,
   student,
   onHandleSelectStudent,
+  data1,
 }) {
   console.log(student);
 

@@ -42,23 +42,25 @@ export default function TelaCadastro() {
   const confirmPassword = watch("confirmPassword");
 
   async function createAccount() {
+    //https://my-json-server.typicode.com/flavioporfirio/server/dimensao_${accountType.toLowerCase()}
+    //id: crypto.randomUUID(),
+
     if (password === confirmPassword) {
-      await fetch(
-        `https://my-json-server.typicode.com/flavioporfirio/server/dimensao_${accountType.toLowerCase()}`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            id: crypto.randomUUID(),
-            nome: name,
-            email,
-            ra,
-            turma: turma.split(","),
-            materia: materia.split(","),
-            profileImg: createImg,
-            password,
-          }),
-        }
-      );
+      await fetch(`http://localhost:3000/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: name,
+          email,
+          ra,
+          turma: turma.split(","),
+          materia: materia.split(","),
+          profileImg: createImg,
+          password,
+        }),
+      });
     }
 
     navigate("/");
