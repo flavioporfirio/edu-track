@@ -1,10 +1,19 @@
 import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
+import path from "path";
 
 const app = express();
+const staticDir = path.resolve(__dirname, "dist");
+
 app.use(express.json());
 app.use(cors());
+app.use(express.static(staticDir));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(staticDir, "index.html"));
+});
+
 const port = 3000;
 
 const Professor = mongoose.model("professor", {
