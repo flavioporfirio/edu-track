@@ -6,7 +6,7 @@ export default function useGetProfessor(ra) {
   useEffect(
     function () {
       async function fetchData() {
-        const res = await fetch("https://edutrack-server/");
+        const res = await fetch("http://localhost:3000/");
         const fetchData = await res.json();
 
         setUser(fetchData[0]);
@@ -21,3 +21,4 @@ export default function useGetProfessor(ra) {
 }
 
 //          `https://my-json-server.typicode.com/flavioporfirio/server/dimensao_professor?ra=${ra}`
+//https://edutrack-server-j5zb.onrender.com/fato_aluno

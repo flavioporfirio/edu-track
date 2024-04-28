@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import mongoDB from "./Hooks/mongoDB";
 import useGetProfessor from "./Hooks/useGetProfessor";
 import useGetSelectedStudent from "./Hooks/useGetSelectedStudent";
 import Ajuda from "./Pages/Ajuda";
@@ -20,6 +21,8 @@ export default function App() {
   const [selectedStudent, setSelectedStudent] = useState(null);
 
   const { user } = useGetProfessor(ra);
+  const { user1 } = mongoDB();
+  console.log(user1);
   const { student } = useGetSelectedStudent(nome);
 
   function handleRA(RA) {

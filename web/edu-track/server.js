@@ -14,7 +14,7 @@ app.use(cors());
 //   res.sendFile(path.join(staticDir, "index.html"));
 // });
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const Professor = mongoose.model("professor", {
   nome: String,

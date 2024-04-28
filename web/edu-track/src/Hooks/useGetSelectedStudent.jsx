@@ -7,7 +7,7 @@ export default function useGetSelectedStudent(nome) {
     function () {
       async function fetchData() {
         //https://my-json-server.typicode.com/flavioporfirio/server/fato_aluno
-        const res = await fetch(`https://edutrack-server/fato_aluno`);
+        const res = await fetch(`http://localhost:3000/fato_aluno`);
         const fetchData = await res.json();
         console.log(fetchData);
         setStudent(fetchData);
