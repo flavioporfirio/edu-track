@@ -6,7 +6,7 @@ export default function useGetProfessor(ra) {
   useEffect(
     function () {
       async function fetchData() {
-        const res = await fetch("http://localhost:3000/");
+        const res = await fetch("https://edutrack-server-j5zb.onrender.com");
         const fetchData = await res.json();
 
         setUser(fetchData[0]);
