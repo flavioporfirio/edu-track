@@ -51,6 +51,11 @@ export default function TelaLogin({
             <Link to="cadastro" type="link">
               Cadastrar professor
             </Link>
+
+            <Link to="cadastro" type="link">
+              Cadastrar novo aluno
+            </Link>
+            
             <button>Entrar</button>
           </div>
           <Link to="ajuda" type="link">
