@@ -1,5 +1,14 @@
 <h1 align="center">Edu-track</h1>
 
+## 🚀 Deploy <a name = "deployment_pt"></a>
+
+O deploy da aplicação foi realizado utilizando a plataforma Vercel. Que garante que a aplicação esteja sempre rodando na última versão do projeto, de forma estável e segura.<br>
+A aplicação pode ser acessada [aqui](https://edutrack-v1.vercel.app).
+
+## 🏁 Iniciando a aplicação <a name = "getting_started_pt"></a>
+
+Caso queira usar esse projeto como base para sua aplicação, as instruções a seguir vão te permitir ober uma cópia do projeto e rodar a aplicação localmente.
+
 ### Instalação
 
 Para acessar o projeto, basta clonar o repositório ou realizar o download dos arquivos do projeto.<br>
@@ -21,11 +30,4 @@ Após instalar as dependências, utilize o seguinte comando no seu terminal para
 npm run dev
 ```
 
-Após iniciar a aplicação inicie também o servidor do json-server, utilize o seguinte comando no seu terminal para iniciar o servidor:
-
-```sh
-npm run server
-```
-
 Com isso, a aplicação estará rodando em <code>http://localhost:5173</code>. Para acessar a aplicação, basta acessar esse endereço no seu navegador.
-E o servidor estára rodando em <code>http://localhost:3333</code>. Para acessar o servidor basta acessar o endereço no navegador.
