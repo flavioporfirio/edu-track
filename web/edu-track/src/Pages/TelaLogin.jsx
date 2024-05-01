@@ -12,7 +12,8 @@ export default function TelaLogin({
   const navigate = useNavigate();
 
   function handleLogin() {
-    if (user.ra === ra && user.password === password) {
+    console.log(ra, user.ra, user.password, password);
+    if (user.ra == ra && user.password == password) {
       navigate("pesquisarAlunos");
     }
   }

@@ -21,10 +21,8 @@ export default function RegistroFaltas({ user, selectedStudent }) {
       professor: user.nome,
     });
 
-    console.log(selectedStudent.faltas.length);
-
     fetch(
-      `https://my-json-server.typicode.com/flavioporfirio/server/fato_aluno/${selectedStudent.id}`,
+      `https://edutrack-server-j5zb.onrender.com/fato_aluno/${selectedStudent.ra}`,
       {
         method: "PUT",
         headers: {

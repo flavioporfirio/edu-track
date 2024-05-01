@@ -12,6 +12,7 @@ import TelaInicial from "./Pages/TelaInicial";
 import TelaLogin from "./Pages/TelaLogin";
 import TelaOpcao from "./Pages/TelaOpcao";
 import "./index.css";
+import useGetListAlunos from "./Hooks/useGetStudentList";
 
 export default function App() {
   const [ra, setRa] = useState("");
@@ -21,6 +22,7 @@ export default function App() {
 
   const { user } = useGetProfessor(ra);
   const { student } = useGetSelectedStudent(nome);
+  const { studentList } = useGetListAlunos();
 
   function handleRA(RA) {
     setRa(RA);

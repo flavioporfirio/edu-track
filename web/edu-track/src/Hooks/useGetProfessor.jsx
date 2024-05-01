@@ -6,10 +6,12 @@ export default function useGetProfessor(ra) {
   useEffect(
     function () {
       async function fetchData() {
-        const res = await fetch("https://edutrack-server-j5zb.onrender.com");
+        const res = await fetch(
+          `https://edutrack-server-j5zb.onrender.com/${ra}`
+        );
         const fetchData = await res.json();
 
-        setUser(fetchData[0]);
+        setUser(fetchData);
         console.log(fetchData);
       }
       fetchData();

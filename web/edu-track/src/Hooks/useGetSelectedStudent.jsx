@@ -2,17 +2,22 @@ import { useEffect, useState } from "react";
 
 export default function useGetSelectedStudent(nome) {
   const [student, setStudent] = useState([]);
+  const studentArr = [];
 
   useEffect(
     function () {
       async function fetchData() {
-        //https://my-json-server.typicode.com/flavioporfirio/server/fato_aluno
         const res = await fetch(
           `https://edutrack-server-j5zb.onrender.com/fato_aluno`
         );
         const fetchData = await res.json();
-        console.log(fetchData);
-        setStudent(fetchData);
+
+        setStudent(
+          fetchData.filter((data) => {
+            const name = data.nome.split(" ")[0];
+            return name.toLowerCase() == nome.toLowerCase() ? data : "";
+          })
+        );
       }
       fetchData();
     },
@@ -21,8 +26,3 @@ export default function useGetSelectedStudent(nome) {
 
   return { student };
 }
-
-//fetchData.filter((data) => {
-//qconst name = data.nome.split(" ")[0];
-// return name.toLowerCase() == nome ? data : "";
-//})

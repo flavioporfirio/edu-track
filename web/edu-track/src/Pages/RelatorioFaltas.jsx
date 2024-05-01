@@ -1,16 +1,17 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
-import useGetStudentList from "../Hooks/useGetStudentList";
+import useGetListAlunos from "../Hooks/useGetStudentList";
 import PageNav from "./PageNav";
 import styles from "./RelatorioFaltas.module.css";
 
 export default function AbsenceReport({ user }) {
   const [filterOption, setFilterOption] = useState("turma");
 
-  const { studentList } = useGetStudentList();
+  const { studentList } = useGetListAlunos();
+
   const absenceObj = [];
-  console.log(studentList);
+  console.log(studentList.map((data) => console.log(data)));
 
   const documentContent = useRef();
   const handlePrint = useReactToPrint({
