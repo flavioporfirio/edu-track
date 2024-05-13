@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Select from "../Components/Select";
-import sendEmail from "../Hooks/sendEmail";
+import { POST } from "../app/api/email/route";
 import PageNav from "./PageNav";
 import styles from "./RegistroFaltas.module.css";
 
 export default function RegistroFaltas({ user, selectedStudent }) {
   const [subject, setSubject] = useState(selectedStudent.disciplina[0].nome);
   const [date, setDate] = useState("");
+  const [situation, setSituation] = useState(selectedStudent.situacao);
 
   const navigate = useNavigate();
 
@@ -22,10 +23,15 @@ export default function RegistroFaltas({ user, selectedStudent }) {
       professor: user.nome,
     });
 
-    sendEmail(selectedStudent);
+    console.log(selectedStudent.faltas.length);
+    if (selectedStudent.faltas.length > 7) {
+      setSituation(situation === false ? situation : !situation);
+
+      POST(selectedStudent.email);
+    }
 
     fetch(
-      `https://edutrack-server-1.onrender.com/fato_aluno/${selectedStudent._id}`,
+      `https://edutrack-server-j5zb.onrender.com/fato_aluno/${selectedStudent._id}`,
       {
         method: "PUT",
         headers: {
