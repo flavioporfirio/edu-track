@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Select from "../Components/Select";
+import sendEmail from "../Hooks/sendEmail";
 import PageNav from "./PageNav";
 import styles from "./RegistroFaltas.module.css";
 
@@ -21,8 +22,10 @@ export default function RegistroFaltas({ user, selectedStudent }) {
       professor: user.nome,
     });
 
+    sendEmail(selectedStudent);
+
     fetch(
-      `https://edutrack-server-j5zb.onrender.com/fato_aluno/${selectedStudent.ra}`,
+      `https://edutrack-server-1.onrender.com/fato_aluno/${selectedStudent._id}`,
       {
         method: "PUT",
         headers: {
