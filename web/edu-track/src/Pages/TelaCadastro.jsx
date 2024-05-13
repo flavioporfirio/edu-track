@@ -42,11 +42,10 @@ export default function TelaCadastro() {
   const confirmPassword = watch("confirmPassword");
 
   async function createAccount() {
-    //https://my-json-server.typicode.com/flavioporfirio/server/dimensao_${accountType.toLowerCase()}
     //id: crypto.randomUUID(),
 
     if (password === confirmPassword) {
-      await fetch(`https://edutrack-server-j5zb.onrender.com/`, {
+      await fetch(`https://edutrack-server-1.onrender.com/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
