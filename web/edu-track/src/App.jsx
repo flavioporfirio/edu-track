@@ -12,17 +12,16 @@ import TelaInicial from "./Pages/TelaInicial";
 import TelaLogin from "./Pages/TelaLogin";
 import TelaOpcao from "./Pages/TelaOpcao";
 import "./index.css";
-import useGetListAlunos from "./Hooks/useGetStudentList";
 
 export default function App() {
   const [ra, setRa] = useState("");
   const [password, setPassword] = useState("");
   const [nome, setNome] = useState("");
   const [selectedStudent, setSelectedStudent] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { user } = useGetProfessor(ra);
-  const { student } = useGetSelectedStudent(nome);
-  const { studentList } = useGetListAlunos();
+  const { student } = useGetSelectedStudent(nome, handleIsLoading);
 
   function handleRA(RA) {
     setRa(RA);
@@ -42,6 +41,10 @@ export default function App() {
 
   function handleSelectStudent(studentObj) {
     setSelectedStudent(studentObj);
+  }
+
+  function handleIsLoading(boolean) {
+    setIsLoading(boolean);
   }
 
   return (
@@ -70,6 +73,7 @@ export default function App() {
                 onHandleSetNome={handleNome}
                 student={student}
                 onHandleSelectStudent={handleSelectStudent}
+                isLoading={isLoading}
               />
             }
           />

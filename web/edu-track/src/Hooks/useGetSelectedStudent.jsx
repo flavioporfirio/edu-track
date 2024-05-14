@@ -1,25 +1,38 @@
 import { useEffect, useState } from "react";
 
-export default function useGetSelectedStudent(nome) {
+export default function useGetSelectedStudent(nome, handleIsLoading) {
   const [student, setStudent] = useState([]);
-  const studentArr = [];
 
   useEffect(
     function () {
-      async function fetchData() {
-        const res = await fetch(
-          `https://edutrack-server-1.onrender.com/fato_aluno`
-        );
-        const fetchData = await res.json();
+      const controller = new AbortController();
 
-        setStudent(
-          fetchData.filter((data) => {
-            const name = data.nome.split(" ")[0];
-            return name.toLowerCase() == nome.toLowerCase() ? data : "";
-          })
-        );
+      async function fetchData() {
+        handleIsLoading(true);
+        try {
+          const res = await fetch(
+            `https://edutrack-server-1.onrender.com/fato_aluno`,
+            { signal: controller.signal }
+          );
+          const fetchData = await res.json();
+
+          setStudent(
+            fetchData.filter((data) => {
+              const name = data.nome.split(" ")[0];
+              return name.toLowerCase() == nome.toLowerCase() ? data : "";
+            })
+          );
+        } catch (err) {
+          console.error(err.message);
+        } finally {
+          handleIsLoading(false);
+        }
       }
       fetchData();
+
+      return function () {
+        controller.abort();
+      };
     },
     [nome]
   );

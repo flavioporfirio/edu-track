@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Loader from "../Components/Loader";
 import Student from "../Components/Student";
 import PageNav from "./PageNav";
 import styles from "./TelaInicial.module.css";
@@ -9,10 +10,8 @@ export default function TelaInicial({
   onHandleSetNome,
   student,
   onHandleSelectStudent,
-  data1,
+  isLoading,
 }) {
-  console.log(student);
-
   return (
     <main className={styles.main}>
       <PageNav user={user} />
@@ -30,15 +29,20 @@ export default function TelaInicial({
             onChange={(e) => onHandleSetNome(e.target.value)}
           />
         </form>
-        <div className={styles.studentContainer}>
-          {student.map((student) => (
-            <Student
-              student={student}
-              key={student.ra}
-              onHandleSelectStudent={onHandleSelectStudent}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className={styles.studentContainer}>
+            {student.map((student) => (
+              <Student
+                student={student}
+                key={student.ra}
+                onHandleSelectStudent={onHandleSelectStudent}
+              />
+            ))}
+          </div>
+        )}
+
         <button>
           <Link to="/relatorioFaltas" type="link">
             Relatório de faltas

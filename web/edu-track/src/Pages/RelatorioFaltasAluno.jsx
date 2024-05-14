@@ -27,7 +27,7 @@ export default function AbsenceReport({ user, selectedStudent }) {
   console.log(subjectAbsenceCounts);
 
   return (
-    <main className="main">
+    <main className="main" ref={documentContent}>
       <PageNav user={user} />
 
       <h1>EduTrack</h1>
@@ -35,7 +35,7 @@ export default function AbsenceReport({ user, selectedStudent }) {
 
       <StudentInfo selectedStudent={selectedStudent} />
 
-      <div className={styles.absenceContainer} ref={documentContent}>
+      <div className={styles.absenceContainer}>
         <table>
           <thead>
             <tr>

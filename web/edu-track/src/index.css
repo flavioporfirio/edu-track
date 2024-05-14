@@ -23,12 +23,19 @@ body {
   overflow-x: hidden;
 
   max-width: 120rem;
-  margin: 0 auto;
+  padding-inline: 1rem;
+  margin: 0 auto 2rem;
+
+  overflow-y: auto;
 }
 
 .main {
-  width: 80rem;
+  max-width: 120rem;
+  width: 90%;
   margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .main h1 {

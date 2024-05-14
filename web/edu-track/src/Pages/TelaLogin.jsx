@@ -12,7 +12,6 @@ export default function TelaLogin({
   const navigate = useNavigate();
 
   function handleLogin() {
-    console.log(ra, user.ra, user.password, password);
     if (user.ra == ra && user.password == password) {
       navigate("pesquisarAlunos");
     }
@@ -56,7 +55,7 @@ export default function TelaLogin({
             <Link to="cadastro" type="link">
               Cadastrar novo aluno
             </Link>
-            
+
             <button>Entrar</button>
           </div>
           <Link to="ajuda" type="link">

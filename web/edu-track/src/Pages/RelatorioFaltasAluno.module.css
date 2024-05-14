@@ -31,7 +31,7 @@
   justify-content: space-between;
 
   padding-top: 10rem;
-  padding-inline: 6rem;
+  /* padding-inline: 6rem; */
 }
 
 .btnContainer button {
@@ -50,4 +50,10 @@
 
 .absenceContainer th {
   padding: 2rem;
+}
+
+@media only screen and (max-width: 840px) {
+  .absenceContainer {
+    height: 25rem;
+  }
 }

@@ -1,5 +1,6 @@
 .main {
-  width: 80rem;
+  max-width: 120rem;
+  width: 90%;
   margin: 0 auto;
 
   display: flex;
@@ -39,6 +40,20 @@
   float: right;
   padding: 1rem 2rem;
 
-  color: white;
-  background-color: gray;
+  color: #000000;
+  background-color: aqua;
+}
+
+@media only screen and (max-width: 840px) {
+  .main {
+    width: 95%;
+  }
+
+  .main form input {
+    width: 90%;
+  }
+
+  .studentContainer {
+    width: 25rem;
+  }
 }

@@ -1,9 +1,12 @@
+.selectEl {
+  margin: 0 auto;
+  padding-right: 12rem;
+}
+
 .absenceContainer {
   display: flex;
   justify-content: center;
-  gap: 60px;
-
-  padding-block: 4rem;
+  gap: 30px;
 }
 
 .subject h3,
@@ -30,7 +33,7 @@
   align-items: center;
   justify-content: space-between;
 
-  padding-top: 10rem;
+  padding-top: 8rem;
   padding-inline: 6rem;
 }
 
@@ -50,4 +53,12 @@
 
 .absenceContainer th {
   padding: 2rem;
+}
+
+@media only screen and (max-width: 840px) {
+  .absenceContainer {
+    /* height: 35rem; */
+
+    padding-block: 1rem;
+  }
 }

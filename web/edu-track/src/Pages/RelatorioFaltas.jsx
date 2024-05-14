@@ -166,7 +166,10 @@ export default function AbsenceReport({ user }) {
       <h1>EduTrack</h1>
       <h3 className="subtitle">Relatório de faltas</h3>
 
-      <select onChange={(e) => setFilterOption(e.target.value)}>
+      <select
+        className={styles.selectEl}
+        onChange={(e) => setFilterOption(e.target.value)}
+      >
         <option value="turma">turma</option>
         <option value="ano">ano</option>
         <option value="professor">professor</option>

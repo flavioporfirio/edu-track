@@ -1,19 +1,10 @@
-const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
-// import path from "path";
+const cors = require("cors");
 
 const app = express();
-// const staticDir = path.resolve(__dirname, "dist");
-
 app.use(express.json());
 app.use(cors());
-// app.use(express.static(staticDir));
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(staticDir, "index.html"));
-// });
-
 const port = process.env.PORT || 3000;
 
 const Professor = mongoose.model("professor", {
@@ -35,6 +26,7 @@ const Fato_Aluno = mongoose.model("fato_aluno", {
   ano: String,
   turma: String,
   disciplina: Array,
+  email: String,
 });
 
 app.get("/fato_aluno", async (req, res) => {
@@ -52,34 +44,39 @@ app.post("/fato_aluno", async (req, res) => {
     ano: req.body.ano,
     turma: req.body.turma,
     disciplina: req.body.disciplina,
+    email: req.body.email,
   });
 
   await aluno.save();
   res.send(aluno);
 });
 
-app.put("/fato_aluno/:ra", async (req, res) => {
-  const ra = req.params.ra;
-  const novosDados = req.body;
-
-  try {
-    const attAluno = await Fato_Aluno.findOneAndUpdate({ ra: ra }, novosDados, {
+app.put("/fato_aluno/:id", async (req, res) => {
+  const attAluno = await Fato_Aluno.findByIdAndUpdate(
+    req.params.id,
+    {
+      faltas: req.body.faltas,
+      situacao: req.body.situacao,
+      ra: req.body.ra,
+      nome: req.body.nome,
+      data_nascimento: req.body.data_nascimento,
+      ano: req.body.ano,
+      turma: req.body.turma,
+      disciplina: req.body.disciplina,
+      email: req.body.email,
+    },
+    {
       new: true,
-    });
-
-    if (!attAluno) {
-      return res.status(404).json({ message: "Aluno não encontrado" });
     }
+  );
 
-    res.json(attAluno);
-  } catch (error) {
-    console.error("Erro ao atualizar aluno:", error);
-    res.status(500).json({ message: "Erro ao atualizar aluno" });
-  }
+  return res.send(attAluno);
 });
 
-app.get("/", async (req, res) => {
-  const professors = await Professor.find();
+app.get("/:ra", async (req, res) => {
+  const ra = req.params.ra;
+
+  const professors = await Professor.findOne({ ra: ra });
   res.send(professors);
 });
 

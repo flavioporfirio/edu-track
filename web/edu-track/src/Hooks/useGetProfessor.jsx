@@ -5,14 +5,27 @@ export default function useGetProfessor(ra) {
 
   useEffect(
     function () {
-      async function fetchData() {
-        const res = await fetch(`https://edutrack-server-1.onrender.com/${ra}`);
-        const fetchData = await res.json();
+      const controller = new AbortController();
 
-        setUser(fetchData);
-        console.log(fetchData);
+      async function fetchData() {
+        try {
+          const res = await fetch(
+            `https://edutrack-server-1.onrender.com/${ra}`,
+            { signal: controller.signal }
+          );
+          const fetchData = await res.json();
+
+          setUser(fetchData);
+          console.log(fetchData);
+        } catch (err) {
+          console.error(err.message);
+        }
       }
       fetchData();
+
+      return function () {
+        controller.abort();
+      };
     },
     [ra]
   );
