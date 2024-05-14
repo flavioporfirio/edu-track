@@ -37,7 +37,7 @@ export default function TelaCadastro() {
     //id: crypto.randomUUID(),
 
     if (password === confirmPassword) {
-      await fetch(`https://edutrack-server-1.onrender.com/`, {
+      await fetch(`https://edu-track.onrender.com/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

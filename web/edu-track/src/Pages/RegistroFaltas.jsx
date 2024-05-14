@@ -25,7 +25,7 @@ export default function RegistroFaltas({ user, selectedStudent }) {
 
     sendEmail(selectedStudent);
 
-    fetch(`https://edutrack-server-1.onrender.com/${selectedStudent._id}`, {
+    fetch(`https://edu-track.onrender.com/${selectedStudent._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

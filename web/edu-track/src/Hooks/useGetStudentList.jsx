@@ -8,10 +8,9 @@ export default function useGetListAlunos() {
 
     async function fetchData() {
       try {
-        const res = await fetch(
-          `https://edutrack-server-1.onrender.com/fato_aluno`,
-          { signal: controller.signal }
-        );
+        const res = await fetch(`https://edu-track.onrender.com/fato_aluno`, {
+          signal: controller.signal,
+        });
         const fetchData = await res.json();
         console.log(fetchData);
         setStudentList(fetchData);

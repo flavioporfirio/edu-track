@@ -10,7 +10,7 @@ export default function useGetProfessor(ra) {
       async function fetchData() {
         try {
           const res = await fetch(
-            `https://edutrack-server-1.onrender.com/${ra}`,
+            `https://edu-track.onrender.com/${ra}`,
             { signal: controller.signal }
           );
           const fetchData = await res.json();
