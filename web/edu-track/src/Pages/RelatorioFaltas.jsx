@@ -236,7 +236,6 @@ export default function AbsenceReport({ user }) {
           <button
             onClick={() => {
               handlePrint();
-              // navigate("/opcao");
             }}
           >
             Gerar relatório

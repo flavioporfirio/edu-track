@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import z from "zod";
 import styles from "./TelaCadastro.module.css";
 
@@ -37,6 +38,8 @@ export default function TelaCadastro() {
     //id: crypto.randomUUID(),
 
     if (password === confirmPassword) {
+      toast.success("Usuário criado com sucesso");
+
       await fetch(`https://edu-track.onrender.com/`, {
         method: "POST",
         headers: {
@@ -52,9 +55,14 @@ export default function TelaCadastro() {
           password,
         }),
       });
-    }
 
-    navigate("/");
+      navigate("/");
+
+      return;
+    }
+    toast.error(
+      "Campo senha e confirmar senha não são iguais, usuário não criado!"
+    );
   }
 
   return (

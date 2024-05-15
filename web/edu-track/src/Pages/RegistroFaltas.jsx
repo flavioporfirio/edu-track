@@ -4,6 +4,7 @@ import Select from "../Components/Select";
 import sendEmail from "../Hooks/sendEmail";
 import PageNav from "./PageNav";
 import styles from "./RegistroFaltas.module.css";
+import { toast } from "sonner";
 
 export default function RegistroFaltas({ user, selectedStudent }) {
   const [subject, setSubject] = useState(selectedStudent.disciplina[0].nome);
@@ -24,6 +25,8 @@ export default function RegistroFaltas({ user, selectedStudent }) {
     });
 
     sendEmail(selectedStudent);
+
+    toast.success("Falta registrada com sucesso");
 
     fetch(`https://edu-track.onrender.com/${selectedStudent._id}`, {
       method: "PUT",

@@ -10,12 +10,10 @@ export default function useGetSelectedStudent(nome, handleIsLoading) {
       async function fetchData() {
         handleIsLoading(true);
         try {
-          const res = await fetch(
-            `https://edu-track.onrender.com/fato_aluno`,
-            { signal: controller.signal }
-          );
+          const res = await fetch(`https://edu-track.onrender.com/fato_aluno`, {
+            signal: controller.signal,
+          });
           const fetchData = await res.json();
-
           setStudent(
             fetchData.filter((data) => {
               const name = data.nome.split(" ")[0];

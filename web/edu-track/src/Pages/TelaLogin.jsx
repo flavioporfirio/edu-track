@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import styles from "./TelaLogin.module.css";
 
 export default function TelaLogin({
@@ -13,8 +14,11 @@ export default function TelaLogin({
 
   function handleLogin() {
     if (user.ra == ra && user.password == password) {
+      toast.success("Login realizado com sucesso");
       navigate("pesquisarAlunos");
+      return;
     }
+    toast.error("Erro ao encontrar o usuário");
   }
 
   return (

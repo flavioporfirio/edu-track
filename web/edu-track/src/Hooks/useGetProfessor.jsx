@@ -9,10 +9,9 @@ export default function useGetProfessor(ra) {
 
       async function fetchData() {
         try {
-          const res = await fetch(
-            `https://edu-track.onrender.com/${ra}`,
-            { signal: controller.signal }
-          );
+          const res = await fetch(`https://edu-track.onrender.com/${ra}`, {
+            signal: controller.signal,
+          });
           const fetchData = await res.json();
 
           setUser(fetchData);
