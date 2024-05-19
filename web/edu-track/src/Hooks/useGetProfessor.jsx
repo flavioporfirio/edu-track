@@ -18,7 +18,6 @@ export default function useGetProfessor(ra) {
           if (text) {
             const fetchData = JSON.parse(text);
             setUser(fetchData);
-            console.log(fetchData);
           } else {
             throw new Error("Response was empty");
           }
