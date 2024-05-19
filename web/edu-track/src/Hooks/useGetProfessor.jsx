@@ -2,35 +2,35 @@ import { useEffect, useState } from "react";
 
 export default function useGetProfessor(ra) {
   const [user, setUser] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(
     function () {
-      const controller = new AbortController();
-
       async function fetchData() {
         try {
-          const res = await fetch(`https://edu-track.onrender.com/${ra}`, {
-            signal: controller.signal,
-          });
-          const fetchData = await res.json();
+          const res = await fetch(`https://edu-track.onrender.com/${ra}`);
 
-          setUser(fetchData);
-          console.log(fetchData);
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+
+          const text = await res.text();
+          if (text) {
+            const fetchData = JSON.parse(text);
+            setUser(fetchData);
+            console.log(fetchData);
+          } else {
+            throw new Error("Response was empty");
+          }
         } catch (err) {
-          console.error(err.message);
+          console.error("Failed to fetch data:", err.message);
+          setError(err.message);
         }
       }
       fetchData();
-
-      return function () {
-        controller.abort();
-      };
     },
     [ra]
   );
 
-  return { user };
+  return { user, error };
 }
-
-//          `https://my-json-server.typicode.com/flavioporfirio/server/dimensao_professor?ra=${ra}`
-//https://edutrack-server-j5zb.onrender.com/fato_aluno
