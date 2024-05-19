@@ -5,7 +5,6 @@ import styles from "./TelaOpcao.module.css";
 
 export default function TelaOpcao({ user, selectedStudent }) {
   const navigate = useNavigate();
-  console.log(selectedStudent);
 
   return (
     <main className="main">

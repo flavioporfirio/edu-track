@@ -4,7 +4,6 @@ import styles from "./Student.module.css";
 
 export default function Student({ student, onHandleSelectStudent }) {
   const navigate = useNavigate();
-  console.log(student);
 
   return (
     <div

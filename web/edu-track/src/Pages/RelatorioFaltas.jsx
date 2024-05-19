@@ -11,7 +11,6 @@ export default function AbsenceReport({ user }) {
   const { studentList } = useGetListAlunos();
 
   const absenceObj = [];
-  console.log(studentList.map((data) => console.log(data)));
 
   const documentContent = useRef();
   const handlePrint = useReactToPrint({
@@ -156,8 +155,6 @@ export default function AbsenceReport({ user }) {
   const professorComFaltas = getProfessorComFaltas();
   const dataComFaltas = getDataComFaltas();
   const materiaComFaltas = getMateriaComFaltas();
-
-  console.log(professorComFaltas);
 
   return (
     <main className="main">

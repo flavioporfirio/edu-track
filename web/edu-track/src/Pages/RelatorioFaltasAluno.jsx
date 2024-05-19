@@ -24,8 +24,6 @@ export default function AbsenceReport({ user, selectedStudent }) {
 
   const subjectAbsenceCounts = countAbsences(selectedStudent?.faltas);
 
-  console.log(subjectAbsenceCounts);
-
   return (
     <main className="main" ref={documentContent}>
       <PageNav user={user} />

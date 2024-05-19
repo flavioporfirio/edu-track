@@ -12,7 +12,6 @@ export default function useGetListAlunos() {
           signal: controller.signal,
         });
         const fetchData = await res.json();
-        console.log(fetchData);
         setStudentList(fetchData);
       } catch (err) {
         console.error(err.message);
