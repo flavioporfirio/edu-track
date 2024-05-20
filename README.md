@@ -24,10 +24,17 @@ Após clonar o repositório, acesse a pasta do projeto e instale as dependência
 npm install
 ```
 
-Após instalar as dependências, utilize o seguinte comando no seu terminal para iniciar a aplicação:
+Após instalar as dependências, acesse a pasta "edu-track" navegando através do terminal do vscode ou abra a pasta "edu-track" diretamente no vscode, e utilize o seguinte comando no seu terminal para iniciar a aplicação:
 
 ```sh
 npm run dev
 ```
 
+Exemplo de como acessar a aplicação através do terminal do vscode, considerando que você esteja na pasta raiz do projeto (a pasta raiz tem duas pastas web e server):
+
+```sh
+cd web
+cd edu-track
+npm run dev
+```
 Com isso, a aplicação estará rodando em <code>http://localhost:5173</code>. Para acessar a aplicação, basta acessar esse endereço no seu navegador.
